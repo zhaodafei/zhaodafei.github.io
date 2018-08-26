@@ -3,6 +3,15 @@
   
     
     <entry>
+      <title>linux-DDU  搜索 locate</title>
+      <link href="/2018/08/26/ubuntu/linux_DDU_locate_updatedb/"/>
+      <url>/2018/08/26/ubuntu/linux_DDU_locate_updatedb/</url>
+      <content type="html"><![CDATA[<p>使用 locate 搜索前一般先执行 updatedb 来更新</p><h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate <span class="string">[选项]</span> <span class="string">[参数]</span></span><br></pre></td></tr></table></figure><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">n 至多显示 n个输出。</span></span><br><span class="line"><span class="ruby">-r 使用正规运算式 做寻找的条件。</span></span><br><span class="line"><span class="ruby">-c 查询指定文件的数目</span></span><br></pre></td></tr></table></figure><p>demo</p><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">locate</span> pwd</span><br><span class="line"><span class="keyword">locate</span> -n <span class="number">2</span> pwd     [显示<span class="number">2</span>条输出]</span><br><span class="line"><span class="keyword">locate</span> -r  pwdt.*   [使用正则]</span><br></pre></td></tr></table></figure><p><img src="/img/ubuntu/linux_command/linux_locate_updatedb/locate_01.png" alt="locate 使用正则搜索" title="使用正则搜索"></p><h3 id="指定位置搜索"><a href="#指定位置搜索" class="headerlink" title="指定位置搜索"></a>指定位置搜索</h3><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">locate</span> aaa/linux.txt</span><br></pre></td></tr></table></figure><p><img src="/img/ubuntu/linux_command/linux_locate_updatedb/locate_02.png" alt="locate 指定位置搜素" title="指定位置搜素"></p><h3 id="查询指定文件的数目"><a href="#查询指定文件的数目" class="headerlink" title="查询指定文件的数目"></a>查询指定文件的数目</h3><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">locate</span> -c  pwd</span><br><span class="line"><span class="keyword">locate</span> -c  pwdt</span><br></pre></td></tr></table></figure><p><img src="/img/ubuntu/linux_command/linux_locate_updatedb/locate_03.png" alt="locate 查询指定文件的数目" title="查询指定文件的数目"></p>]]></content>
+      
+      
+    </entry>
+    
+    <entry>
       <title>linux-DDU  文件重命名  -rename</title>
       <link href="/2018/08/19/ubuntu/linux_DDU_rename/"/>
       <url>/2018/08/19/ubuntu/linux_DDU_rename/</url>
