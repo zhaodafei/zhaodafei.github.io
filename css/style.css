@@ -1318,3 +1318,13 @@ table td {
 #ds-reset .ds-post-button:hover {
   background: #608cb7 !important;
 }
+/* dafei */
+.archive-list .archive-list-count {
+  margin-left: 8px;
+}
+.archive-list .archive-list-count:before {
+  content: '(';
+}
+.archive-list .archive-list-count:after {
+  content: ')';
+}
