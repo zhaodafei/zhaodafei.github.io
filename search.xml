@@ -3,6 +3,15 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2021/11/12/zzz_nvm%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
+      <url>/2021/11/12/zzz_nvm%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<p>01) 下载 nvm  nvm-setup.zip<br><a href="https://github.com/coreybutler/nvm-windows/releases" target="_blank" rel="noopener">https://github.com/coreybutler/nvm-windows/releases</a>  选择 nvm-setup.zip 版本<br><a href="https://github.com/coreybutler/nvm-windows/releases/download/1.1.8/nvm-setup.zip" target="_blank" rel="noopener">https://github.com/coreybutler/nvm-windows/releases/download/1.1.8/nvm-setup.zip</a><br><a href="https://github.com/coreybutler/nvm-windows/releases/download/1.1.8/nvm-setup.zip" target="_blank" rel="noopener">https://github.com/coreybutler/nvm-windows/releases/download/1.1.8/nvm-setup.zip</a></p><p>02) nvm version 查看版本<br>03) 修改配置文件settings.txt,设置下载源<br>    node_mirror: <a href="https://npm.taobao.org/mirrors/node/" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/node/</a><br>    npm_mirror: <a href="https://npm.taobao.org/mirrors/npm/" target="_blank" rel="noopener">https://npm.taobao.org/mirrors/npm/</a></p><p>04) 安装node.js 版本<br>    nvm install 14.18.0<br>    nvm install 8.17.0</p><p>05) 列出已经安装的node版本<br>    nvm ls</p><p>06) 选择使用 node 版本<br>    nvm use 14.18.0<br>    nvm use 8.17.0</p><p>07) 查看node 版本<br>    node -v<br>    npm -v</p><p>08) 查看远程所有可以用的node版本<br>    nvm ls available (windows中命令)</p><p><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong> node 8.17.0 <strong><strong>***</strong></strong><br>本文采用局部安装使用,所以用的命令带 npx hexo,如果是全局安装的可以直接使用 hexo 命令<br>比如 npx hexo g   ;   hexo g</p><p>01) 局部安装 hexo 包<br>npm install hexo</p><p>02) 查看 hexo 版本<br>npx hexo -v </p><p>03) 开始使用<br>npx hexo g</p>]]></content>
+      
+      
+    </entry>
+    
+    <entry>
       <title>-高并发解决方案</title>
       <link href="/2021/11/12/z_interview/%E9%AB%98%E5%B9%B6%E5%8F%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E9%AB%98%E5%B9%B6%E5%8F%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
       <url>/2021/11/12/z_interview/%E9%AB%98%E5%B9%B6%E5%8F%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/%E9%AB%98%E5%B9%B6%E5%8F%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
@@ -783,9 +792,9 @@
       
         <tags>
             
-            <tag> Win </tag>
-            
             <tag> PHP </tag>
+            
+            <tag> Win </tag>
             
             <tag> IIS </tag>
             
@@ -1826,9 +1835,9 @@
       
         <tags>
             
-            <tag> Node </tag>
-            
             <tag> WIN </tag>
+            
+            <tag> Node </tag>
             
             <tag> npm </tag>
             
@@ -5016,9 +5025,9 @@
       
         <tags>
             
-            <tag> CentOS </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> CentOS </tag>
             
             <tag> Redis </tag>
             
@@ -5047,9 +5056,9 @@
             
             <tag> PHP </tag>
             
-            <tag> CentOS </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> CentOS </tag>
             
             <tag> xdebug </tag>
             
@@ -5076,9 +5085,9 @@
       
         <tags>
             
-            <tag> CentOS </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> CentOS </tag>
             
             <tag> PHP7 </tag>
             
@@ -5105,9 +5114,9 @@
       
         <tags>
             
-            <tag> CentOS </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> CentOS </tag>
             
             <tag> MySQL5 </tag>
             
@@ -5132,9 +5141,9 @@
       
         <tags>
             
-            <tag> CentOS </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> CentOS </tag>
             
             <tag> crontab </tag>
             
