@@ -17,7 +17,9 @@ date: 2022-04-01
 
 `Jetbrains`中常用功能,快捷键等其他技巧 [JetBrains 里不为人知的秘密](https://zzk.cnblogs.com/my/s/blogpost-p?Keywords=JetBrains%20%E9%87%8C%E4%B8%8D%E4%B8%BA%E4%BA%BA%E7%9F%A5%E7%9A%84%E7%A7%98%E5%AF%86&pageindex=1)
 
-最后附几张张精美logo
+[JetBrains logo](https://www.jetbrains.com/company/brand/#logos-and-icons) 
+
+最后附几张精美logo
 
 ![IntelliJ IDEA](https://www.jetbrains.com.cn/idea/img/idea-edu.svg "IntelliJ IDEA")
 
