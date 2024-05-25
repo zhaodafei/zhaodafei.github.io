@@ -1,0 +1,672 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="网站简要描述——大飞的简要描述"><title> | 大飞</title><!--link(rel="stylesheet", type="text/css", href="//fonts.css.network/css?family=Source+Code+Pro")--><link rel="stylesheet" type="text/css" href="/css/source_code_pro/source-code-pro.css"><link rel="stylesheet" type="text/css" href="/css/style.css?v=2.0.1"><link rel="stylesheet" type="text/css" href="/css/highlight.css?v=2.0.1"><link rel="Shortcut Icon" href="/favicon.ico"><link rel="bookmark" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">大飞</h1><a id="logo" href="/.">大飞</a><p class="description">大飞</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> 订阅</i></a><a href="/categories/"><i class="fa fa fa-gui"> 分类</i></a><a href="/tags/"><i class="fa fa fa-biao"> 标签</i></a></div><div id="search-form"><div id="result-mask" class="hide"></div><label><input id="search-key" type="text" autocomplete="off" placeholder="Arama"></label><div id="result-wrap" class="hide"><div id="search-result"></div></div><div class="hide"><template id="search-tpl"><div class="item"><a href="/{path}" title="{title}"><div class="title">{title}</div><div class="time">{date}</div><div class="tags">{tags}</div></a></div></template></div></div></div><div id="layout" class="layout-g"><div class="layout-l"><div class="content_container"><div class="post"><h1 class="post-title"></h1><div class="post-meta"><a href="/2024/05/23/z_fun/web/01_FullCalendar_001文档/#comments" class="comment-count"></a><p><span class="date">May 23, 2024</span><span><i id="busuanzi_container_page_pv"><i id="busuanzi_value_page_pv"></i><i>点击</i></i></span></p></div><div class="post-content"><h1 id="FullCalendar-日历插件中文说明文档"><a href="#FullCalendar-日历插件中文说明文档" class="headerlink" title="     FullCalendar 日历插件中文说明文档       "></a><a href="https://www.cnblogs.com/ymnets/p/7052818.html" target="_blank" rel="noopener">     FullCalendar 日历插件中文说明文档       </a></h1><p>FullCalendar提供了丰富的属性设置和方法调用，开发者可以根据FullCalendar提供的API快速完成一个日历日程的开发，本文将FullCalendar的常用属性和方法、回调函数等整理成中文文档，以供参阅</p>
+<h4 id="普通显示设置"><a href="#普通显示设置" class="headerlink" title="普通显示设置"></a>普通显示设置</h4><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>header</td>
+<td>设置日历头部信息。 如果设置为false，则不显示头部信息。包括left，center,right左中右三个位置，每个位置都可以对应以下不同的配置： title: 显示当前月份/周/日信息 prev: 用于切换到上一月/周/日视图的按钮 next: 用于切换到下一月/周/日视图的按钮 prevYear：用于切换到上一年视图的按钮 nextYear：用于切换到下一年视图的按钮</td>
+<td>{ left: ‘title’, center: ‘’, right: ‘today prev,next’ }</td>
+</tr>
+<tr>
+<td>theme</td>
+<td>是否允许使用jquery的ui主题，如果设置为true，则需要加载jquery ui相关css和js文件。 <a href="http://www.helloweba.com/demo/fullcalendar/themes.html" target="_blank" rel="noopener">查看演示</a></td>
+<td>false</td>
+</tr>
+<tr>
+<td>buttonIcons</td>
+<td>设置header中使用的prev, next等变量对应按钮的样式，只有当theme为true时才有效，如果你调用了jQuery ui样式但又不想使用它的图标样式，可以将此属性设置为false</td>
+<td>{ prev: ‘circle-triangle-w’, next: ‘circle-triangle-e’ }</td>
+</tr>
+<tr>
+<td>firstDay</td>
+<td>设置一周中显示的第一天是哪天，周日是0，周一是1，类推。</td>
+<td>0</td>
+</tr>
+<tr>
+<td>isRTL</td>
+<td>设置为ture时则日历从右往左显示，貌似是针对阿拉伯人设计的。</td>
+<td>false</td>
+</tr>
+<tr>
+<td>weekends</td>
+<td>是否显示周末，设为false则不显示周六和周日。</td>
+<td>true</td>
+</tr>
+<tr>
+<td>hiddenDays</td>
+<td>隐藏一周中的某一天或某几天，数组形式，如隐藏周二和周五：[2,5]，默认不隐藏，除非weekends设置为false。</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>weekMode</td>
+<td>在月视图里显示周的模式，因为每月周数可能不同，所以月视图高度不一定。 fixed：固定显示6周高，日历高度保持不变 liquid：不固定周数，高度随周数变化 variable：不固定周数，但高度固定</td>
+<td>‘fixed’</td>
+</tr>
+<tr>
+<td>weekNumbers</td>
+<td>是否在日历中显示周次(一年中的第几周)，如果设置为true，则会在月视图的左侧、周视图和日视图的左上角显示周数。</td>
+<td>false</td>
+</tr>
+<tr>
+<td>weekNumberCalculation</td>
+<td>周次的显示格式。</td>
+<td>“iso”</td>
+</tr>
+<tr>
+<td>height</td>
+<td>设置日历的高度，包括header日历头部，默认未设置，高度根据aspectRatio值自适应。</td>
+<td></td>
+</tr>
+<tr>
+<td>contentHeight</td>
+<td>设置日历主体内容的高度，不包括header部分，默认未设置，高度根据aspectRatio值自适应。</td>
+<td></td>
+</tr>
+<tr>
+<td>aspectRatio</td>
+<td>设置日历单元格宽度与高度的比例。</td>
+<td>1.35</td>
+</tr>
+<tr>
+<td>handleWindowResize</td>
+<td>是否随浏览器窗口大小变化而自动变化。</td>
+<td>true</td>
+</tr>
+<tr>
+<td>windowResize</td>
+<td>callback，当浏览器窗口变化时触发function，使用： $(‘#calendar’).fullCalendar({ windowResize: function(view) { alert(‘The calendar has adjusted to a window resize’); } });</td>
+<td></td>
+</tr>
+<tr>
+<td>render</td>
+<td>method，绑定日历到id上。 $(‘#id’).fullCalendar(‘render’);</td>
+<td></td>
+</tr>
+<tr>
+<td>destroy</td>
+<td>method，销毁id日历，把日历回复到初始化前状态。 $(‘#id’).fullCalendar(‘destroy’);</td>
+</tr>
+</tbody>
+</table>
+<h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><p>FullCalendar提供五种可用视图，包括month（月视图），basicWeek（基本周视图，左侧不显示具体时间），basicDay（基本日视图，左侧不显示具体时间），agendaWeek（周视图），agendaDay（日视图）。</p>
+<p>View视图对象的属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>包括month,basicWeek,basicDay,agendaWeek,agendaDay</td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题内容(例如”2013年9月” or “Sep 7 - 13 2013”)</td>
+</tr>
+<tr>
+<td>start</td>
+<td>Date类型, 该view下的第一天</td>
+</tr>
+<tr>
+<td>end</td>
+<td>Date类型, 该view下的最后一天. 由于是一个闭合的值, 所以, 比如在month view下, 10月这个月份, 那么end对应的应该是11月的第一天</td>
+</tr>
+<tr>
+<td>visStart</td>
+<td>Date类型. 在该view下第一个可以访问的day. month view下, 该值是当月的第一天, week view下, 则通常和start一致</td>
+</tr>
+<tr>
+<td>visEnd</td>
+<td>Date类型, 最后一个可访问的day</td>
+</tr>
+</tbody>
+</table>
+<p>View其他属性和方法</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>defaultView</td>
+<td>日历初始化时默认视图</td>
+<td>‘month’</td>
+</tr>
+<tr>
+<td>getView</td>
+<td>method，取得视图对象信息，如获取当前视图的标题内容： var view = $(‘#calendar’).fullCalendar(‘getView’); alert(“The view’s title is “ + view.title);</td>
+<td></td>
+</tr>
+<tr>
+<td>changeView</td>
+<td>method，切换视图 .fullCalendar(‘changeView’,viewName) viewName为5种视图中的一种</td>
+</tr>
+</tbody>
+</table>
+<h4 id="日程选项"><a href="#日程选项" class="headerlink" title="日程选项"></a>日程选项</h4><p>以下选项设置适用于agendaWeek和agendaDay视图里。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allDaySlot</td>
+<td>在agenda视图模式下，是否在日历上方显示all-day(全天)</td>
+<td>true</td>
+</tr>
+<tr>
+<td>allDayText</td>
+<td>定义日历上方显示全天信息的文本</td>
+<td>‘all-day’</td>
+</tr>
+<tr>
+<td>axisFormat</td>
+<td>设置日历agenda视图下左侧的时间显示格式，默认显示如：5:30pm</td>
+<td>‘h(:mm)tt’</td>
+</tr>
+<tr>
+<td>slotMinutes</td>
+<td>在agenda的视图中, 两个时间之间的间隔(分钟)</td>
+<td>30</td>
+</tr>
+<tr>
+<td>defaultEventMinutes</td>
+<td>事件默认的时间执行长度，如果事件对象没有指定执行多长时间，则默认执行两个小时</td>
+<td>120</td>
+</tr>
+<tr>
+<td>firstHour</td>
+<td>当切换到agenda时，初始滚动条滚动到的时间位置，默认在6点钟的位置</td>
+<td>6</td>
+</tr>
+<tr>
+<td>minTime</td>
+<td>设置显示的时间从几点开始</td>
+<td>0</td>
+</tr>
+<tr>
+<td>maxTime</td>
+<td>设置显示的时间从几天结束</td>
+<td>24</td>
+</tr>
+<tr>
+<td>slotEventOverlap</td>
+<td>设置视图中的事件显示是否可以重叠覆盖</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<h4 id="当前日期设置"><a href="#当前日期设置" class="headerlink" title="当前日期设置"></a>当前日期设置</h4><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>year</td>
+<td>设置日历年份，必须为4位如：2013，如果不设置则默认为当前年份</td>
+<td></td>
+</tr>
+<tr>
+<td>month</td>
+<td>设置初始化日历的月份，从0开始，如果年份和月份都未指定，则从一月开始。</td>
+<td></td>
+</tr>
+<tr>
+<td>date</td>
+<td>设置日历初始化时的日期，只有在周视图和日视图中有效</td>
+<td></td>
+</tr>
+<tr>
+<td>prev</td>
+<td>method，进入到上一月（周、天）视图 $(‘#calendar’).fullCalendar(‘prev’);</td>
+<td></td>
+</tr>
+<tr>
+<td>next</td>
+<td>method，进入到下一月（周、天）视图 $(‘#calendar’).fullCalendar(‘next’);</td>
+<td></td>
+</tr>
+<tr>
+<td>prevYear</td>
+<td>method，进入上一年视图</td>
+<td></td>
+</tr>
+<tr>
+<td>nextYear</td>
+<td>method，进入下一年视图</td>
+<td></td>
+</tr>
+<tr>
+<td>today</td>
+<td>method，进入当天</td>
+<td></td>
+</tr>
+<tr>
+<td>gotoDate</td>
+<td>method，指定进入日历中的某一天 $(‘#calendar’).fullCalendar( ‘gotoDate’, year [, month, [ date ]] )</td>
+<td></td>
+</tr>
+<tr>
+<td>incrementDate</td>
+<td>method， 以当前时间为轴, 将日历向前, 或向后移动指定长度的时间, 比如:  $(‘#calendar’).fullCalendar(‘incrementDate’, -3, 2, -5)就表示将日历年份向前移动3年,  月份向后移动2月, day(天数)向前移动5天。</td>
+<td></td>
+</tr>
+<tr>
+<td>getDate</td>
+<td>method，返回当前日历中的日期</td>
+</tr>
+</tbody>
+</table>
+<h4 id="文本与时间定制"><a href="#文本与时间定制" class="headerlink" title="文本与时间定制"></a>文本与时间定制</h4><p>你可以根据项目需求设置日历显示的文本信息，如中文的月份等。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timeFormat</td>
+<td>设置显示的日程事件的时间格式，如timeFormat: ‘H:mm’ 则显示24小时制的像10:30</td>
+<td>{agenda: ‘h:mm{ - h:mm}}</td>
+</tr>
+<tr>
+<td>columnFormat</td>
+<td>设置显示日历每列表头信息的格式文本，默认： { month: ‘ddd’, // Mon week: ‘ddd M/d’, // Mon 9/7 day: ‘dddd M/d’ // Monday 9/7 }</td>
+<td>见描述</td>
+</tr>
+<tr>
+<td>titleFormat</td>
+<td>设置用于显示日历头部的文本信息，默认： { month: ‘MMMM yyyy’, // September 2013 week: “MMM d[ yyyy]{ ‘—‘[ MMM] d yyyy}”, // Sep 7 - 13 2013 day: ‘dddd, MMM d, yyyy’ // Tuesday, Sep 8, 2013 }</td>
+<td>见描述</td>
+</tr>
+<tr>
+<td>buttonText</td>
+<td>设置日历头部各按钮的显示文本信息，默认： { prev: ‘‹’, // ‹ next: ‘›’, // › prevYear: ‘«’, // « nextYear: ‘»’, // » today: ‘today’, month: ‘month’, week: ‘week’, day: ‘day’ }</td>
+<td>见描述</td>
+</tr>
+<tr>
+<td>monthNames</td>
+<td>月份全称，默认： [‘January’, ‘February’, ‘March’, ‘April’, ‘May’, ‘June’, ‘July’, ‘August’, ‘September’, ‘October’, ‘November’, ‘December’]</td>
+<td>见描述</td>
+</tr>
+<tr>
+<td>monthNamesShort</td>
+<td>月份名称简写，默认：[‘Jan’, ‘Feb’, ‘Mar’, ‘Apr’, ‘May’, ‘Jun’ ‘Jul’, ‘Aug’, ‘Sep’, ‘Oct’, ‘Nov’, ‘Dec’]</td>
+<td>见描述</td>
+</tr>
+<tr>
+<td>dayNames</td>
+<td>星期全称，默认：[‘Sunday’, ‘Monday’, ‘Tuesday’, ‘Wednesday’, ‘Thursday’, ‘Friday’, ‘Saturday’]</td>
+<td>见描述</td>
+</tr>
+<tr>
+<td>dayNamesShort</td>
+<td>星期名称简写，默认：[‘Sun’, ‘Mon’, ‘Tue’, ‘Wed’, ‘Thu’, ‘Fri’, ‘Sat’]</td>
+<td>见描述</td>
+</tr>
+<tr>
+<td>weekNumberTitle</td>
+<td>周次，即一年中的第几周</td>
+<td>“W”</td>
+</tr>
+</tbody>
+</table>
+<h4 id="鼠标单击和滑过"><a href="#鼠标单击和滑过" class="headerlink" title="鼠标单击和滑过"></a>鼠标单击和滑过</h4><p>以下列出的是当鼠标单击或者滑过日历中的某个元素时，回调的函数callback。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dayClick</td>
+<td>当单击日历中的某一天时，触发callback，用法： $(‘#calendar’).fullCalendar({ dayClick: function(date, allDay, jsEvent, view) { do something… } }); date是点击的day的时间(如果在agenda view,  还包含时间)，在月view下点击一天时，allDay是true，在agenda模式下，点击all-day的窄条时，allDay是true，点击其他的agenda view下的day则为false，jsEvent就是一个普通的javascript事件，包含的是click事件的基础信息。</td>
+</tr>
+<tr>
+<td>eventClick</td>
+<td>当点击日历中的某一日程（事件）时，触发此操作，用法： $(‘#calendar’).fullCalendar({ dayClick: function(event, jsEvent, view) { do something… } }); event是日程（事件）对象，jsEvent是个javascript事件，view是当前视图对象。</td>
+</tr>
+<tr>
+<td>eventMouseover eventMouseout</td>
+<td>鼠标划过和离开的事件，用法和参数同上</td>
+</tr>
+</tbody>
+</table>
+<h4 id="选择操作"><a href="#选择操作" class="headerlink" title="选择操作"></a>选择操作</h4><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>selectable</td>
+<td>是否允许用户通过单击或拖动选择日历中的对象，包括天和时间。</td>
+<td>false</td>
+</tr>
+<tr>
+<td>selectHelper</td>
+<td>当点击或拖动选择时间时，显示默认加载的提示信息，该属性只在周/天视图里可用。</td>
+<td>false</td>
+</tr>
+<tr>
+<td>unselectAuto</td>
+<td>当点击页面日历以外的位置时，是否自动取消当前的选中状态。</td>
+<td>true</td>
+</tr>
+<tr>
+<td>unselectCancel</td>
+<td>指定哪些元素不会清空当前的选中，以JQUERY选择器的方式指定 ‘#someId’。</td>
+<td>‘’</td>
+</tr>
+<tr>
+<td>select</td>
+<td>callback，被选中的函数回调，使用方法： function( startDate, endDate, allDay, jsEvent, view ) startDate：被选中区域的开始时间 endDate：被选中区域的结束时间 allDay：是否为全天事件 startDate：jascript对象 startDate：当前视图对象</td>
+<td></td>
+</tr>
+<tr>
+<td>unselect</td>
+<td>callback，选中被取消时的回调，使用方法： function( view, jsEvent )</td>
+<td></td>
+</tr>
+<tr>
+<td>select</td>
+<td>method，选中某个时间，使用方法： $(‘#calendar’).fullCalendar( ‘select’, startDate, endDate, allDay )</td>
+<td></td>
+</tr>
+<tr>
+<td>unselect</td>
+<td>method，取消选中，使用方法： $(‘#calendar’).fullCalendar( ‘unselect’ )</td>
+</tr>
+</tbody>
+</table>
+<h4 id="日程事件数据"><a href="#日程事件数据" class="headerlink" title="日程事件数据"></a>日程事件数据</h4><p>FullCalendar最重要的部分，设置用于日程事件相关信息。</p>
+<p>Event Object，事件对象，用来存储一个日历事件信息的标准对象，只有title和start是必须的</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>可选，事件唯一标识，重复的事件具有相同的id</td>
+</tr>
+<tr>
+<td>title</td>
+<td>必须，事件在日历上显示的title</td>
+</tr>
+<tr>
+<td>allDay</td>
+<td>可选，true or false，是否是全天事件。</td>
+</tr>
+<tr>
+<td>start</td>
+<td>必须，事件的开始时间。</td>
+</tr>
+<tr>
+<td>end</td>
+<td>可选，结束时间。</td>
+</tr>
+<tr>
+<td>url</td>
+<td>可选，当指定后，事件被点击将打开对应url。</td>
+</tr>
+<tr>
+<td>className</td>
+<td>指定事件的样式。</td>
+</tr>
+<tr>
+<td>editable</td>
+<td>事件是否可编辑，可编辑是指可以移动, 改变大小等。</td>
+</tr>
+<tr>
+<td>source</td>
+<td>指向次event的eventsource对象。</td>
+</tr>
+<tr>
+<td>color</td>
+<td>背景和边框颜色。</td>
+</tr>
+<tr>
+<td>backgroundColor</td>
+<td>背景颜色。</td>
+</tr>
+<tr>
+<td>borderColor</td>
+<td>边框颜色。</td>
+</tr>
+<tr>
+<td>textColor</td>
+<td>文本颜色。</td>
+</tr>
+</tbody>
+</table>
+<p>事件源对象</p>
+<p>事件源即日历中的数据来源，FullCalendar提供了数组、函数调用、以及JSON数据的形式，当然也可以通过Google  Calendar feed获取数据接口。helloweba.com后面会有文章专门介绍事件数据的操作，包括数据的查询、写入、更新和删除操作。</p>
+<p>以下是Event事件相关的参数属性说明。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eventSources</td>
+<td>事件源，存储数组对象，可以是Arrays/Functions/URLs。</td>
+<td></td>
+</tr>
+<tr>
+<td>allDayDefault</td>
+<td>是否为全天日程事件，显示这一天中所做的事情。</td>
+<td>true</td>
+</tr>
+<tr>
+<td>ignoreTimezone</td>
+<td>是否忽略时区。</td>
+<td>true</td>
+</tr>
+<tr>
+<td>startParam</td>
+<td>在使用URL方式获取events数据源的时候, 自动插入到URL中的参数, 表示当前需要抓取的日程事件的起始时间。</td>
+<td>‘start’</td>
+</tr>
+<tr>
+<td>endParam</td>
+<td>和startParam参数意义相同, 表示要抓取的日程事件的终止时间。</td>
+<td>‘end’</td>
+</tr>
+<tr>
+<td>lazyFetching</td>
+<td>是否从缓存信息获取event。比如从月视图切换到周视图。</td>
+<td>true</td>
+</tr>
+<tr>
+<td>eventDataTransform</td>
+<td>callback，将外部数据源转换成Fullcalendar可以处理的数据</td>
+<td></td>
+</tr>
+<tr>
+<td>loading</td>
+<td>callback，日历开始加载的时候，isLoading参数为true触发一次，日历加载完毕，isLoading参数为false触发一次，用法： function(isLoading, view)</td>
+<td></td>
+</tr>
+<tr>
+<td>updateEvent</td>
+<td>method，更新日历空间中的一个日程事件，如果是重复的日程事件，则都更新。用法： $(‘#calendar’).fullCalendar( ‘updateEvent’, event )</td>
+<td></td>
+</tr>
+<tr>
+<td>clientEvents</td>
+<td>method，返回FullCalendar已经存储到客户端的CalEvents对象数组， 第二个参数和removeEvents方法的第二个参数意义相同， 只不过在过滤器中， 如果返回true， 则该CalEvent对象将被加入到返回的数组中。</td>
+<td></td>
+</tr>
+<tr>
+<td>removeEvents</td>
+<td>method，从日历中删除一个日程事件. 第二个参数可以不填， 可以填id， 可以是一个过滤器(一个函数， 接受CalEvent对象作为参数)。用法： $(‘#calendar’).fullCalendar( ‘removeEvents’ [, idOrFilter ] )</td>
+<td></td>
+</tr>
+<tr>
+<td>refetchEvents</td>
+<td>method，重新抓取所有的日程事件源上的日程事件并渲染它们。</td>
+<td></td>
+</tr>
+<tr>
+<td>addEventSource</td>
+<td>method，添加一个日程事件源，添加之后， FullCalendar会马上从该源获取日程事件， 并加载到日历中。第二个参数和定义Calendar时候使用的url参数一致。</td>
+<td></td>
+</tr>
+<tr>
+<td>removeEventSource</td>
+<td>method，移除一个日程事件源，该源上获取得到的日程时间也将被马上从日历中移除。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="事件渲染"><a href="#事件渲染" class="headerlink" title="事件渲染"></a>事件渲染</h4><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eventColor eventBackgroundColor eventBorderColor eventTextColor</td>
+<td>设置日程事件的背景色和边框色，以及文本颜色。可以使用任意支持css的颜色方式，如 #f00, #ff0000, rgb(255,0,0), or red。</td>
+</tr>
+<tr>
+<td>eventRender</td>
+<td>callback，当日程事件渲染时触发，用法： function(calEvent, element, view)</td>
+</tr>
+<tr>
+<td>eventAfterRender</td>
+<td>callback，当日程事件被渲染后触发，用法： function( event, element, view ) { }</td>
+</tr>
+<tr>
+<td>eventDestroy</td>
+<td>callback，当日程事件移出时触发，用法： function( event, element, view ) { }</td>
+</tr>
+<tr>
+<td>renderEvent</td>
+<td>method，一旦日历重新取得日程源，则原有日程将消失，当指定stick为true时，日程将永久的保存到日历上。</td>
+</tr>
+<tr>
+<td>rerenderEvents</td>
+<td>method，重新渲染所有事件。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="日程事件拖动和缩放"><a href="#日程事件拖动和缩放" class="headerlink" title="日程事件拖动和缩放"></a>日程事件拖动和缩放</h4><p>拖动和缩放功能依赖于jQuery ui的draggable和resizable，所以在使用时要提前加载<a href="http://jqueryui.com/" target="_blank" rel="noopener">jQuery ui</a>相关插件。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>editable</td>
+<td>是否可编辑，即进行可拖动和缩放操作。</td>
+<td>false</td>
+</tr>
+<tr>
+<td>eventStartEditable</td>
+<td>是否让事件在开始时就可以拖动。</td>
+<td>true</td>
+</tr>
+<tr>
+<td>dragRevertDuration</td>
+<td>如果拖拽不成功，多久回复原状，毫秒</td>
+<td>500</td>
+</tr>
+<tr>
+<td>dragOpacity</td>
+<td>拖动时候的不透明度。 { agenda:.5 //对于agenda试图 ‘’:1.0 //其他视图 }</td>
+<td>见描述</td>
+</tr>
+<tr>
+<td>eventDragStart, eventDragStop</td>
+<td>callback，日程事件被拖动之前和之后触发。这里的拖动不一定是一个有效的拖动，只要日程事件的控件被拖着动了，事件就触发。 可以从该对象中获取位移，位置等数据。用法： function( event, jsEvent, ui, view ) { }</td>
+<td></td>
+</tr>
+<tr>
+<td>eventDrop</td>
+<td>callback，当拖拽完成并且时间改变时触发，用法： function( event, dayDelta, minuteDelta, allDay, revertFunc, jsEvent, ui, view ) { } ayDelta 保存日程向前或者向后移动了多少天 minuteDelta 这个值只有在agenda视图有效，移动的时间 allDay 如果是月视图，或者是agenda视图的全天日程，此值为true,否则为false</td>
+<td></td>
+</tr>
+<tr>
+<td>eventResizeStart,  eventResizeStop</td>
+<td>callback，在一个日程事件改变大小之前之后发生(不一定要改变成功)，用法： function( event, jsEvent, ui, view ) { }</td>
+<td></td>
+</tr>
+<tr>
+<td>eventResize</td>
+<td>callback，在日程事件改变大小并成功后调用, 参数和eventDrop参数用法一致。用法： function( event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view ) { }</td>
+</tr>
+</tbody>
+</table>
+<h4 id="日期工具"><a href="#日期工具" class="headerlink" title="日期工具"></a>日期工具</h4><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>formatDate</td>
+<td>格式化日期，通过指定的格式格式化一个日期，返回一个字符串。options选项是一个对象，其中设置本地化变量支持的属性值. 比如{ monthNames : [‘一月’，’二月’，……]，dayNames: [‘周日’，’周一’，…..]}，用法： $.fullCalendar.formatDate( date，formatString [,options ] )</td>
+</tr>
+<tr>
+<td>formatDates</td>
+<td>一次格式化两个日期，和上一个格式化日期类似，只不过，这里在formatString中使用大括号{…}来描述第二个日期的格式化方式。用法： $.fullCalendar.formatDates( date1，date2，formatString [,options ] )</td>
+</tr>
+<tr>
+<td>parseDate</td>
+<td>解析日期，将一个字符串格式成一个javascript的Date对象，这个string可以是ISO8601，IETF，UNIX时间戳三种格式。用法: $.fullCalendar.parseDate( string )</td>
+</tr>
+<tr>
+<td>parseISO8601</td>
+<td>将一个ISO8601字符串转换成一个javascript 的Date对象。用法： $.fullCalendar.parseISO8601( string [,ignoreTimezone ] )</td>
+</tr>
+</tbody>
+</table>
+<h3 id="参考文献："><a href="#参考文献：" class="headerlink" title="参考文献："></a>参考文献：</h3><p>官方文档：<a href="http://arshaw.com/fullcalendar/docs/" target="_blank" rel="noopener">http://arshaw.com/fullcalendar/docs/</a></p>
+<p>FullCalendar 官方文档翻：<a href="http://www.cnblogs.com/mycoding/archive/2011/05/20/2052152.html" target="_blank" rel="noopener">http://www.cnblogs.com/mycoding/archive/2011/05/20/2052152.html</a></p>
+<p>最新FullCalendar中文文档： <a href="https://www.helloweba.net/javascript/445.html" target="_blank" rel="noopener">https://www.helloweba.net/javascript/445.html</a></p>
+</div><div class="tags"></div><div class="post-share"></div><div class="post-nav"><a href="/2024/05/23/z_fun/web/01_FullCalendar_001文档/" class="pre"></a><a href="/2024/05/20/ubuntu/linux_DDU_date/" class="next">-date 服务器时间</a></div><div id="comments"></div></div></div></div><div class="layout-r"><div id="sidebar"><div class="search-pla"></div><div id="toc" class="widget"><div class="widget-title"><i class="fa fa-fei">文章目录</i></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FullCalendar-日历插件中文说明文档"><span class="toc-text">     FullCalendar 日历插件中文说明文档       </span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#普通显示设置"><span class="toc-text">普通显示设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#视图"><span class="toc-text">视图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#日程选项"><span class="toc-text">日程选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#当前日期设置"><span class="toc-text">当前日期设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文本与时间定制"><span class="toc-text">文本与时间定制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#鼠标单击和滑过"><span class="toc-text">鼠标单击和滑过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择操作"><span class="toc-text">选择操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#日程事件数据"><span class="toc-text">日程事件数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事件渲染"><span class="toc-text">事件渲染</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#日程事件拖动和缩放"><span class="toc-text">日程事件拖动和缩放</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#日期工具"><span class="toc-text">日期工具</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考文献："><span class="toc-text">参考文献：</span></a></li></ol></div><div class="widget"><div class="widget-title"><i class="fa fa-xie"> 最新文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2024/05/23/z_fun/web/01_FullCalendar_002文档/">z_fun/web/01_FullCalendar_002文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/23/z_fun/web/01_FullCalendar_002文档/">z_fun/web/01_FullCalendar_002文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/23/z_fun/web/01_FullCalendar_001文档/">z_fun/web/01_FullCalendar_001文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/23/z_fun/web/01_FullCalendar_001文档/">z_fun/web/01_FullCalendar_001文档</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/20/ubuntu/linux_DDU_date/">-date 服务器时间</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/05/16/z_fun/java/prettier_配置/package/">z_fun/java/prettier_配置/package</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/04/29/other/论文要点/">论文要点</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/04/12/JavaScript/JavaScript_常见使用_07_排序/">标题demo模板</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/03/21/other/word_常见技巧_01_表格/">word_常见技巧_01_表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/03/12/vue/Vue3/Vue3_05bind_变色/">Vue3之v-bind变色</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-gui"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Apache/">Apache</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Axios/">Axios</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Browser/">Browser</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Browser/Developer/">Developer</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Browser/Developer/Chrome/">Chrome</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Browser/Developer/Chrome/Firefox/">Firefox</a><span class="category-list-count">1</span></li></ul></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C#</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CentOS/">CentOS</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/CentOS/Ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/C语言/">C语言</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Docker/">Docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ESX/">ESX</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Eclipse/">Eclipse</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Element/">Element</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/English/">English</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Flex/">Flex</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/FullCalendar/">FullCalendar</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Github/">Github</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Grid/">Grid</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTML/">HTML</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/HTTP/">HTTP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDEA/">IDEA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IIS/">IIS</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/Maven/">Maven</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jenkins/">Jenkins</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">47</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/CentOS/">CentOS</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/CentOS/MySQL/">MySQL</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/CentOS/PHP/">PHP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/CentOS/Redis/">Redis</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Ubuntu/">Ubuntu</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/Vagrant/">Vagrant</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Lodop/">Lodop</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Maths/">Maths</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyEclipse/">MyEclipse</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL8/">MySQL8</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Mybatis/">Mybatis</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nuxt/">Nuxt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Oracle/">Oracle</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Other/">Other</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">29</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/Laravel/">Laravel</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/Swoole/">Swoole</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/Yii/">Yii</a><span class="category-list-count">7</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Pinia/">Pinia</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Postman/">Postman</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redmine/">Redmine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/RegExp/">RegExp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SSM/">SSM</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SVN/">SVN</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shipyard/">Shipyard</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tengine/">Tengine</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tomact/">Tomact</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TypeScript/">TypeScript</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Ubuntu/">Ubuntu</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vant/">Vant</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">26</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/ECharts/">ECharts</a><span class="category-list-count">8</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue3/">Vue3</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VueRouter4-x/">VueRouter4.x</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vuex/">Vuex</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/">WEB</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/Emmet/">Emmet</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/HTTP/">HTTP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/JavaScript/">JavaScript</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/JavaScript/setTimeout/">setTimeout</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/JavaScript/setTimeout/Promise/">Promise</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/JavaScript/单体模式/">单体模式</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WEB/Vue/">Vue</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/WIN/">WIN</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Webpack/">Webpack</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Win/">Win</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Win/Yii/">Yii</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yii2/">Yii2</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Yii2/Laravel/">Laravel</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/ant-design-vue/">ant-design-vue</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/bignumber/">bignumber</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/css/">css</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/dayjs/">dayjs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/drools/">drools</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/element-plus/">element-plus</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/iframe/">iframe</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/">jQuery</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jjwt/">jjwt</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/">js</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jsonp/">jsonp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mvn/">mvn</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ruoyi/">ruoyi</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/setTimeout/">setTimeout</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/setTimeout/setInterval/">setInterval</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/springBoot/">springBoot</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/svg/">svg</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uni-app/">uni-app</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/word/">word</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wx/">wx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/xxx/">xxx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/微信/">微信</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/离散数学/">离散数学</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机/">计算机</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/论文/">论文</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-biao"> 标签</i></div><div class="tagcloud"><a href="/tags/cat/" style="font-size: 15px;">cat</a> <a href="/tags/编程/" style="font-size: 15px;">编程</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/Fragment/" style="font-size: 15px;">Fragment</a> <a href="/tags/ESX/" style="font-size: 15px;">ESX</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/iframe/" style="font-size: 15px;">iframe</a> <a href="/tags/运算符/" style="font-size: 15px;">运算符</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/jsonp/" style="font-size: 15px;">jsonp</a> <a href="/tags/HTML/" style="font-size: 15px;">HTML</a> <a href="/tags/setTimeout/" style="font-size: 15px;">setTimeout</a> <a href="/tags/Promise/" style="font-size: 15px;">Promise</a> <a href="/tags/jQuery/" style="font-size: 15px;">jQuery</a> <a href="/tags/优化/" style="font-size: 15px;">优化</a> <a href="/tags/setInterval/" style="font-size: 15px;">setInterval</a> <a href="/tags/加解密/" style="font-size: 15px;">加解密</a> <a href="/tags/Webpack/" style="font-size: 15px;">Webpack</a> <a href="/tags/TypeScript/" style="font-size: 15px;">TypeScript</a> <a href="/tags/Yii/" style="font-size: 15px;">Yii</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Apache/" style="font-size: 15px;">Apache</a> <a href="/tags/Win/" style="font-size: 15px;">Win</a> <a href="/tags/PHP/" style="font-size: 15px;">PHP</a> <a href="/tags/CentOS/" style="font-size: 15px;">CentOS</a> <a href="/tags/Linux/" style="font-size: 15px;">Linux</a> <a href="/tags/crontab/" style="font-size: 15px;">crontab</a> <a href="/tags/Redis/" style="font-size: 15px;">Redis</a> <a href="/tags/MySQL5/" style="font-size: 15px;">MySQL5</a> <a href="/tags/PHP7/" style="font-size: 15px;">PHP7</a> <a href="/tags/xdebug/" style="font-size: 15px;">xdebug</a> <a href="/tags/Ubuntu/" style="font-size: 15px;">Ubuntu</a> <a href="/tags/Vagrant/" style="font-size: 15px;">Vagrant</a> <a href="/tags/C语言/" style="font-size: 15px;">C语言</a> <a href="/tags/CSS/" style="font-size: 15px;">CSS</a> <a href="/tags/float/" style="font-size: 15px;">float</a> <a href="/tags/BFC/" style="font-size: 15px;">BFC</a> <a href="/tags/animation/" style="font-size: 15px;">animation</a> <a href="/tags/margin/" style="font-size: 15px;">margin</a> <a href="/tags/position/" style="font-size: 15px;">position</a> <a href="/tags/text-align/" style="font-size: 15px;">text-align</a> <a href="/tags/C/" style="font-size: 15px;">C#</a> <a href="/tags/transform/" style="font-size: 15px;">transform</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/CSS选择器/" style="font-size: 15px;">CSS选择器</a> <a href="/tags/Flex/" style="font-size: 15px;">Flex</a> <a href="/tags/WEB特殊字符/" style="font-size: 15px;">WEB特殊字符</a> <a href="/tags/Grid/" style="font-size: 15px;">Grid</a> <a href="/tags/Docker/" style="font-size: 15px;">Docker</a> <a href="/tags/Markdown/" style="font-size: 15px;">Markdown</a> <a href="/tags/BlueLake/" style="font-size: 15px;">BlueLake</a> <a href="/tags/drools/" style="font-size: 15px;">drools</a> <a href="/tags/IDEA/" style="font-size: 15px;">IDEA</a> <a href="/tags/JSP/" style="font-size: 15px;">JSP</a> <a href="/tags/MySQL/" style="font-size: 15px;">MySQL</a> <a href="/tags/svg/" style="font-size: 15px;">svg</a> <a href="/tags/Java/" style="font-size: 15px;">Java</a> <a href="/tags/SSM/" style="font-size: 15px;">SSM</a> <a href="/tags/Eclipse/" style="font-size: 15px;">Eclipse</a> <a href="/tags/MyEclipse/" style="font-size: 15px;">MyEclipse</a> <a href="/tags/jjwt/" style="font-size: 15px;">jjwt</a> <a href="/tags/springBoot/" style="font-size: 15px;">springBoot</a> <a href="/tags/Mybatis/" style="font-size: 15px;">Mybatis</a> <a href="/tags/mvn/" style="font-size: 15px;">mvn</a> <a href="/tags/离散数学/" style="font-size: 15px;">离散数学</a> <a href="/tags/Yii2/" style="font-size: 15px;">Yii2</a> <a href="/tags/Laravel/" style="font-size: 15px;">Laravel</a> <a href="/tags/Nginx/" style="font-size: 15px;">Nginx</a> <a href="/tags/MySQL8/" style="font-size: 15px;">MySQL8</a> <a href="/tags/MySQL-shell/" style="font-size: 15px;">MySQL-shell</a> <a href="/tags/Browser/" style="font-size: 15px;">Browser</a> <a href="/tags/Developer/" style="font-size: 15px;">Developer</a> <a href="/tags/Chrome/" style="font-size: 15px;">Chrome</a> <a href="/tags/Firefox/" style="font-size: 15px;">Firefox</a> <a href="/tags/WEB/" style="font-size: 15px;">WEB</a> <a href="/tags/Emmet/" style="font-size: 15px;">Emmet</a> <a href="/tags/English/" style="font-size: 15px;">English</a> <a href="/tags/Lodop/" style="font-size: 15px;">Lodop</a> <a href="/tags/Maths/" style="font-size: 15px;">Maths</a> <a href="/tags/Postman/" style="font-size: 15px;">Postman</a> <a href="/tags/Other/" style="font-size: 15px;">Other</a> <a href="/tags/Github/" style="font-size: 15px;">Github</a> <a href="/tags/word/" style="font-size: 15px;">word</a> <a href="/tags/Oracle/" style="font-size: 15px;">Oracle</a> <a href="/tags/论文/" style="font-size: 15px;">论文</a> <a href="/tags/HTTP/" style="font-size: 15px;">HTTP</a> <a href="/tags/HTTPS/" style="font-size: 15px;">HTTPS</a> <a href="/tags/GD/" style="font-size: 15px;">GD</a> <a href="/tags/math/" style="font-size: 15px;">math</a> <a href="/tags/split/" style="font-size: 15px;">split</a> <a href="/tags/PDO-OCI/" style="font-size: 15px;">PDO_OCI</a> <a href="/tags/chmod/" style="font-size: 15px;">chmod</a> <a href="/tags/curl/" style="font-size: 15px;">curl</a> <a href="/tags/cp/" style="font-size: 15px;">cp</a> <a href="/tags/find/" style="font-size: 15px;">find</a> <a href="/tags/less/" style="font-size: 15px;">less</a> <a href="/tags/more/" style="font-size: 15px;">more</a> <a href="/tags/head/" style="font-size: 15px;">head</a> <a href="/tags/tail/" style="font-size: 15px;">tail</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-archive"> 归档</i></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">27</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/">2022</a><span class="archive-list-count">48</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/">2015</a><span class="archive-list-count">150</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/">2014</a><span class="archive-list-count">69</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/">2013</a><span class="archive-list-count">16</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-you"> 友情链接</i></div><ul></ul><a href="https://www.cnblogs.com/dafei4" title="联系方式QQ:1097625354" target="_blank">联系方式QQ:1097625354</a><ul></ul><a href="https://github.com" title="github" target="_blank">github</a><ul></ul><a href="https://www.jetbrains.com" title="Jetbrains" target="_blank">Jetbrains</a><ul></ul><a href="http://blog.jamci.cn" title="飛鳥的学习日记" target="_blank">飛鳥的学习日记</a><ul></ul><a href="https://icewak.github.io" title="三哥的日常" target="_blank">三哥的日常</a><ul></ul><a href="https://chaoo.oschina.io" title="BlueLake主题" target="_blank">BlueLake主题</a></div></div></div></div><a id="totop" href="#top"></a><div id="footer"><div class="footer-info"><p><a href="/baidusitemap.xml">Baidu Site Haritası</a> |  <a href="/atom.xml">订阅</a> |  <a href="/about/">关于</a></p><p>本站总访问量：<i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>次</p><p><span> Copyright &copy;<a href="/." rel="nofollow">大飞.</a></span><span> Theme by<a rel="nofollow" target="_blank" href="https://github.com/chaooo/hexo-theme-BlueLake"> BlueLake.</a></span><span> Count by<a href="http://busuanzi.ibruce.info/"> busuanzi.</a></span><span> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a></span></p></div></div></div><script src="/js/self_busuanzi.pure.mini.js?v=2.0.1"></script><script type="text/javascript" src="/js/search.json.js?v=2.0.1"></script><script type="text/javascript" src="/js/toctotop.js?v=2.0.1" async></script></body></html>
